@@ -16,10 +16,34 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+    <?php Yii::app()->bootstrap->register(); ?>        
 </head>
 
 <body>
 
+<?php $this->widget('bootstrap.widgets.TbNavbar', array(
+    'brandLabel' => 'HospitalApp',
+    'collapse' => true,
+    'display' => TbHtml::NAVBAR_DISPLAY_STATICTOP,
+    'items' => array(
+        array(
+            'class' => 'bootstrap.widgets.TbNav',
+            'items' => array(
+                array('label' => 'Base de Datos', 'url' => '#', 'active' => true),
+                array('label' => 'Preprocesamiento', 'items' => array(
+                        array('label' => 'PreProc1', 'url' => '#'),
+                        array('label' => 'PreProc1', 'url' => '#'),
+                        array('label' => 'PreProc1', 'url' => '#'),
+                        TbHtml::menuDivider(),
+                        array('label' => 'Separate link', 'url' => '#'),
+                    ),
+                ),
+                array('label' => 'Link', 'url' => '#'),
+            ),
+        ),
+    ),
+)); ?>
+    
 <div class="container" id="page">
 
 	<div id="header">

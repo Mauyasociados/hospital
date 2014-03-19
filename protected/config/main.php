@@ -12,22 +12,33 @@ return array(
 	// preloading 'log' component
 	'preload'=>array('log'),
 
+        //yiistrap
+        // path aliases
+        'aliases' => array(
+            'bootstrap' => realpath(__DIR__ . '/../extensions/bootstrap'), // change this if necessary
+        ),
+    
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+                'bootstrap.helpers.TbHtml',
+                'bootstrap.helpers.TbArray', //Cuando aparece include(TbArray.php): failed to open stream: No such file or directory
+                'bootstrap.behaviors.TbWidget' //Cuando aparece include(TbArray.php): failed to open stream: No such file or directory
 	),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-		/*
+		
 		'gii'=>array(
+                        //yiistrap
+                        'generatorPaths' => array('bootstrap.gii'),
 			'class'=>'system.gii.GiiModule',
-			'password'=>'Enter Your Password Here',
+			'password'=>'hospital',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
-		*/
+		
 	),
 
 	// application components
@@ -79,6 +90,11 @@ return array(
 				*/
 			),
 		),
+            
+                //yiistrap
+                'bootstrap' => array(
+                    'class' => 'bootstrap.components.TbApi',   
+                ),
 	),
 
 	// application-level parameters that can be accessed
@@ -86,5 +102,5 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
-	),
+	),    
 );
